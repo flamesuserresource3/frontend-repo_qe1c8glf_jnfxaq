@@ -3,6 +3,8 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 import { Rocket } from 'lucide-react';
 
 export default function App() {
@@ -19,6 +21,7 @@ export default function App() {
             <a href="#about" className="text-white/80 hover:text-white">About</a>
             <a href="#skills" className="text-white/80 hover:text-white">Skills</a>
             <a href="#projects" className="text-white/80 hover:text-white">Projects</a>
+            <a href="#contact" className="text-white/80 hover:text-white">Contact</a>
           </nav>
           <a
             href="/resume.pdf"
@@ -36,7 +39,10 @@ export default function App() {
         <About />
         <Skills />
         <Projects />
+        <Contact />
       </main>
+
+      <Footer />
     </div>
   );
 }
