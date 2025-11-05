@@ -82,9 +82,9 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Spline 3D scene */}
+        {/* Spline 3D scene without box */}
         <div className="relative w-full md:w-1/2">
-          <div className="h-[380px] w-full overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm md:h-[520px]">
+          <div className="h-[380px] w-full md:h-[520px]">
             <Spline
               scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode"
               style={{ width: '100%', height: '100%' }}
