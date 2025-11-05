@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Spline from '@splinetool/react-spline';
 import { Github, Linkedin, Mail, ArrowRight, ExternalLink } from 'lucide-react';
 
 const SocialLink = ({ href, label, children }) => (
@@ -14,59 +15,19 @@ const SocialLink = ({ href, label, children }) => (
   </a>
 );
 
-// Soft animated background with orbiting gradient orbs
-function OrbitingOrbs() {
-  return (
-    <div className="absolute inset-0 overflow-hidden">
-      {/* radial base glow */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.12),transparent_60%)]" />
-
-      {/* Orb 1 */}
-      <motion.div
-        aria-hidden
-        initial={{ rotate: 0 }}
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 36, ease: 'linear' }}
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[64rem] w-[64rem] -translate-x-1/2 -translate-y-1/2"
-      >
-        <div className="absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-gradient-to-br from-indigo-500/40 to-cyan-400/30 blur-3xl" />
-      </motion.div>
-
-      {/* Orb 2 */}
-      <motion.div
-        aria-hidden
-        initial={{ rotate: 0 }}
-        animate={{ rotate: -360 }}
-        transition={{ repeat: Infinity, duration: 48, ease: 'linear' }}
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[80rem] w-[80rem] -translate-x-1/2 -translate-y-1/2"
-      >
-        <div className="absolute left-[15%] top-[10%] h-56 w-56 rounded-full bg-gradient-to-br from-fuchsia-500/30 to-rose-400/20 blur-3xl" />
-      </motion.div>
-
-      {/* Orb 3 */}
-      <motion.div
-        aria-hidden
-        initial={{ rotate: 0 }}
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 60, ease: 'linear' }}
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[72rem] w-[72rem] -translate-x-1/2 -translate-y-1/2"
-      >
-        <div className="absolute bottom-[8%] right-[10%] h-72 w-72 rounded-full bg-gradient-to-br from-emerald-400/30 to-teal-300/20 blur-3xl" />
-      </motion.div>
-
-      {/* vignette and top/bottom fades */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent,rgba(0,0,0,0.6))]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#0b0f17] to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0b0f17] to-transparent" />
-    </div>
-  );
-}
-
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-[80vh] overflow-hidden bg-[#0b0f17] text-white">
-      {/* Animated background */}
-      <OrbitingOrbs />
+      {/* Full-width Spline background (interactive) */}
+      <div className="absolute inset-0">
+        <Spline scene="https://prod.spline.design/4cHQr84zOGAHOehh/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+      </div>
+
+      {/* Gradient overlays should not block interaction */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#0b0f17] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0b0f17] to-transparent" />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-10 px-6 py-24 md:flex-row md:gap-8 md:py-32">
@@ -128,7 +89,6 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Visual spacer for layout balance */}
         <div className="w-full md:w-2/5" />
       </div>
     </section>
