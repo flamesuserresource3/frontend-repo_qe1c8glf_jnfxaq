@@ -1,0 +1,24 @@
+[
+  {
+    "role": "Full Stack Developer",
+    "company": "Freelance",
+    "period": "2022 — Present",
+    "points": [
+      "Designed and shipped full‑stack apps with React, FastAPI/Node, and SQL/NoSQL.",
+      "Led performance workstreams, improving load times and Core Web Vitals.",
+      "Built CI/CD pipelines and containerized deployments with Docker."
+    ],
+    "tags": ["React", "TypeScript", "FastAPI", "PostgreSQL", "Docker"]
+  },
+  {
+    "role": "Frontend Engineer",
+    "company": "Various",
+    "period": "2020 — 2022",
+    "points": [
+      "Implemented component‑driven UIs with animations and accessibility.",
+      "Collaborated closely with designers, refining UX and interaction details.",
+      "Maintained shared libraries and improved developer experience."
+    ],
+    "tags": ["Next.js", "Framer Motion", "Tailwind", "Design Systems"]
+  }
+]
