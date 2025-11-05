@@ -20,17 +20,32 @@ export default function Hero() {
     <section id="home" className="relative min-h-[80vh] overflow-hidden bg-[#0b0f17] text-white">
       {/* Full-width Spline background (interactive) */}
       <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/4cHQr84zOGAHOehh/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        <Spline scene="https://prod.spline.design/jdTN4VDCXmSY8utE/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
 
-      {/* Gradient overlays should not block interaction */}
+      {/* Ambient iridescent glow layer (visual only; doesn't block interaction) */}
       <div className="pointer-events-none absolute inset-0">
+        {/* Top/bottom fades to ensure text readability */}
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#0b0f17] to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0b0f17] to-transparent" />
+        {/* Slow rotating radial glow to complement chrome blobs */}
+        <motion.div
+          aria-hidden
+          initial={{ rotate: 0, opacity: 0.25 }}
+          animate={{ rotate: 360, opacity: 0.35 }}
+          transition={{ repeat: Infinity, duration: 40, ease: 'linear' }}
+          className="absolute left-1/2 top-1/2 h-[120vmax] w-[120vmax] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            background:
+              'radial-gradient(40% 40% at 50% 50%, rgba(99,102,241,0.25), rgba(236,72,153,0.18) 40%, rgba(34,211,238,0.12) 70%, transparent 75%)',
+            filter: 'blur(60px)',
+            mixBlendMode: 'screen',
+          }}
+        />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-10 px-6 py-24 md:flex-row md:gap-8 md:py-32">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-10 px-6 py-28 md:flex-row md:gap-8 md:py-36">
         <div className="w-full md:w-3/5">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
