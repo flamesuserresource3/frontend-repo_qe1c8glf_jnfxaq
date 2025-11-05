@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowRight, ExternalLink } from 'lucide-react';
-import Spline from '@splinetool/react-spline';
+import { Github, Linkedin, Mail, ArrowRight, ExternalLink, Code2, Cpu, Cloud, Database } from 'lucide-react';
 
 const SocialLink = ({ href, label, children }) => (
   <a
@@ -14,6 +13,81 @@ const SocialLink = ({ href, label, children }) => (
     {children}
   </a>
 );
+
+// A lightweight, GPU-friendly hero animation using Framer Motion
+// Replaces the previous keyboard Spline with orbiting gradient orbs + icons
+function OrbitingOrbs() {
+  return (
+    <div className="relative h-[380px] w-full md:h-[520px]">
+      {/* Core glow */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div className="h-72 w-72 md:h-96 md:w-96 rounded-full bg-indigo-500/20 blur-3xl" />
+      </div>
+
+      {/* Central badge */}
+      <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
+        <div className="flex h-24 w-24 items-center justify-center rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-xl shadow-indigo-500/10">
+          <Code2 className="text-indigo-300" size={36} />
+        </div>
+      </div>
+
+      {/* Orbit rings */}
+      <motion.div
+        aria-hidden
+        className="absolute inset-0"
+        style={{ transformOrigin: '50% 50%' }}
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 28, ease: 'linear' }}
+      >
+        {/* Outer orbit */}
+        <div className="absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute left-1/2 top-0 -translate-x-1/2">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur">
+              <Cpu className="text-purple-300" size={22} />
+            </div>
+          </div>
+          <div className="absolute left-0 top-1/2 -translate-y-1/2">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur">
+              <Database className="text-cyan-300" size={20} />
+            </div>
+          </div>
+          <div className="absolute left-1/2 bottom-0 -translate-x-1/2">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur">
+              <Cloud className="text-emerald-300" size={18} />
+            </div>
+          </div>
+          <div className="absolute right-0 top-1/2 -translate-y-1/2">
+            <div className="h-8 w-8 rounded-full bg-indigo-400/40 blur-sm" />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Inner counter-rotating orbit */}
+      <motion.div
+        aria-hidden
+        className="absolute inset-0"
+        style={{ transformOrigin: '50% 50%' }}
+        animate={{ rotate: -360 }}
+        transition={{ repeat: Infinity, duration: 22, ease: 'linear' }}
+      >
+        <div className="absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute left-1/2 top-0 -translate-x-1/2">
+            <div className="h-6 w-6 rounded-full bg-purple-400/50 blur-[2px]" />
+          </div>
+          <div className="absolute right-0 top-1/2 -translate-y-1/2">
+            <div className="h-4 w-4 rounded-full bg-cyan-300/60" />
+          </div>
+          <div className="absolute left-0 bottom-0">
+            <div className="h-5 w-5 rounded-full bg-pink-400/60" />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Subtle grid overlay */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(transparent_0_23px,rgba(255,255,255,.2)_24px),linear-gradient(90deg,transparent_0_23px,rgba(255,255,255,.2)_24px)] [background-size:24px_24px]" />
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
@@ -84,14 +158,9 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Spline 3D scene without box */}
+        {/* New animated visual (no Spline) */}
         <div className="relative w-full md:w-1/2">
-          <div className="h-[380px] w-full md:h-[520px]">
-            <Spline
-              scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode"
-              style={{ width: '100%', height: '100%' }}
-            />
-          </div>
+          <OrbitingOrbs />
         </div>
       </div>
     </section>
