@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "realtime-collab",
+    "title": "Realtime Collaboration Suite",
+    "desc": "Docs, comments, and presence with CRDT sync and WebSockets.",
+    "stack": ["React", "Node", "WebSocket", "Postgres"],
+    "demo": "#",
+    "repo": "#",
+    "images": [
+      { "id": 1, "label": "Editor", "gradient": "from-indigo-500/30 to-cyan-500/30" },
+      { "id": 2, "label": "Presence", "gradient": "from-fuchsia-500/30 to-purple-500/30" },
+      { "id": 3, "label": "Comments", "gradient": "from-emerald-500/30 to-teal-500/30" }
+    ]
+  },
+  {
+    "slug": "ecommerce-platform",
+    "title": "E-commerce Platform",
+    "desc": "Headless storefront with blazing-fast search and checkout.",
+    "stack": ["Next.js", "Stripe", "Prisma", "PostgreSQL"],
+    "demo": "#",
+    "repo": "#",
+    "images": [
+      { "id": 1, "label": "Catalog", "gradient": "from-indigo-500/30 to-cyan-500/30" },
+      { "id": 2, "label": "Product", "gradient": "from-fuchsia-500/30 to-purple-500/30" },
+      { "id": 3, "label": "Checkout", "gradient": "from-amber-500/30 to-pink-500/30" }
+    ]
+  },
+  {
+    "slug": "analytics-dash",
+    "title": "Analytics Dashboards",
+    "desc": "Interactive dashboards with drilldowns and custom widgets.",
+    "stack": ["React", "D3", "FastAPI", "MongoDB"],
+    "demo": "#",
+    "repo": "#",
+    "images": [
+      { "id": 1, "label": "KPIs", "gradient": "from-indigo-500/30 to-cyan-500/30" },
+      { "id": 2, "label": "Drilldown", "gradient": "from-fuchsia-500/30 to-purple-500/30" },
+      { "id": 3, "label": "Widgets", "gradient": "from-emerald-500/30 to-teal-500/30" }
+    ]
+  }
+]

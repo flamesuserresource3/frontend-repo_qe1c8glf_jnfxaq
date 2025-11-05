@@ -1,48 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, X, ChevronLeft, ChevronRight } from 'lucide-react';
-
-const projects = [
-  {
-    slug: 'realtime-collab',
-    title: 'Realtime Collaboration Suite',
-    desc: 'Docs, comments, and presence with CRDT sync and WebSockets.',
-    stack: ['React', 'Node', 'WebSocket', 'Postgres'],
-    demo: '#',
-    repo: '#',
-    images: [
-      { id: 1, label: 'Editor', gradient: 'from-indigo-500/30 to-cyan-500/30' },
-      { id: 2, label: 'Presence', gradient: 'from-fuchsia-500/30 to-purple-500/30' },
-      { id: 3, label: 'Comments', gradient: 'from-emerald-500/30 to-teal-500/30' },
-    ],
-  },
-  {
-    slug: 'ecommerce-platform',
-    title: 'E-commerce Platform',
-    desc: 'Headless storefront with blazing-fast search and checkout.',
-    stack: ['Next.js', 'Stripe', 'Prisma', 'PostgreSQL'],
-    demo: '#',
-    repo: '#',
-    images: [
-      { id: 1, label: 'Catalog', gradient: 'from-indigo-500/30 to-cyan-500/30' },
-      { id: 2, label: 'Product', gradient: 'from-fuchsia-500/30 to-purple-500/30' },
-      { id: 3, label: 'Checkout', gradient: 'from-amber-500/30 to-pink-500/30' },
-    ],
-  },
-  {
-    slug: 'analytics-dash',
-    title: 'Analytics Dashboards',
-    desc: 'Interactive dashboards with drilldowns and custom widgets.',
-    stack: ['React', 'D3', 'FastAPI', 'MongoDB'],
-    demo: '#',
-    repo: '#',
-    images: [
-      { id: 1, label: 'KPIs', gradient: 'from-indigo-500/30 to-cyan-500/30' },
-      { id: 2, label: 'Drilldown', gradient: 'from-fuchsia-500/30 to-purple-500/30' },
-      { id: 3, label: 'Widgets', gradient: 'from-emerald-500/30 to-teal-500/30' },
-    ],
-  },
-];
+import projects from '../data/projects.json';
 
 const SVGPreview = ({ label }) => (
   <svg className="h-full w-full" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -119,16 +78,24 @@ function ProjectModal({ slug, onClose }) {
   const project = useProjectBySlug(slug);
   const [index, setIndex] = useState(0);
 
+  // Reset index whenever a new project is opened
+  useEffect(() => {
+    setIndex(0);
+  }, [slug]);
+
+  // Guard against stale indices and add arrow key navigation
   useEffect(() => {
     if (!project) return;
     if (index >= project.images.length) setIndex(0);
-  }, [project, index]);
 
-  useEffect(() => {
-    const onEsc = (e) => e.key === 'Escape' && onClose();
-    window.addEventListener('keydown', onEsc);
-    return () => window.removeEventListener('keydown', onEsc);
-  }, [onClose]);
+    const handleKeys = (e) => {
+      if (e.key === 'ArrowRight') setIndex((i) => (i + 1) % project.images.length);
+      if (e.key === 'ArrowLeft') setIndex((i) => (i - 1 + project.images.length) % project.images.length);
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeys);
+    return () => window.removeEventListener('keydown', handleKeys);
+  }, [project, index, onClose]);
 
   if (!project) return null;
 
@@ -162,14 +129,26 @@ function ProjectModal({ slug, onClose }) {
             {/* Gallery */}
             <div className="relative">
               <div className="relative h-64 w-full overflow-hidden rounded-xl border border-white/10 bg-white/5 md:h-80">
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.images[index].gradient}`} />
-                <div className="relative h-full w-full">
-                  <SVGPreview label={project.images[index].label} />
-                </div>
-                <button onClick={prev} className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/10 p-2 backdrop-blur hover:bg-white/20" aria-label="Previous image">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -24 }}
+                    transition={{ duration: 0.25 }}
+                    className="absolute inset-0"
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.images[index].gradient}`} />
+                    <div className="relative h-full w-full">
+                      <SVGPreview label={project.images[index].label} />
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+
+                <button onClick={(e) => { e.stopPropagation(); prev(); }} className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/10 p-2 backdrop-blur hover:bg-white/20" aria-label="Previous image">
                   <ChevronLeft size={16} />
                 </button>
-                <button onClick={next} className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/10 p-2 backdrop-blur hover:bg-white/20" aria-label="Next image">
+                <button onClick={(e) => { e.stopPropagation(); next(); }} className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/10 p-2 backdrop-blur hover:bg-white/20" aria-label="Next image">
                   <ChevronRight size={16} />
                 </button>
               </div>

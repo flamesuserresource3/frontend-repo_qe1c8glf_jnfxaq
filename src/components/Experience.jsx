@@ -35,7 +35,9 @@ export default function Experience() {
         </div>
 
         <div className="relative">
-          <div className="absolute left-4 top-0 bottom-0 hidden w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent md:block" />
+          {/* Vertical line */}
+          <div className="pointer-events-none absolute left-4 top-0 hidden h-full w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent md:block" />
+
           <div className="space-y-8">
             {timeline.map((item, idx) => (
               <motion.div
@@ -46,6 +48,9 @@ export default function Experience() {
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
                 className="relative rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur"
               >
+                {/* Dot */}
+                <div className="absolute left-2 top-6 hidden h-3 w-3 -translate-x-1/2 rounded-full bg-indigo-400 shadow-[0_0_0_4px_rgba(99,102,241,0.2)] md:block" />
+
                 <div className="md:pl-6">
                   <div className="mb-1 text-sm text-white/60">{item.period}</div>
                   <div className="text-lg font-semibold">{item.role} • {item.company}</div>

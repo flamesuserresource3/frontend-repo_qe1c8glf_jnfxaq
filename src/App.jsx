@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { Rocket } from 'lucide-react';
@@ -20,6 +21,7 @@ export default function App() {
           <nav className="hidden gap-6 text-sm md:flex">
             <a href="#about" className="text-white/80 hover:text-white">About</a>
             <a href="#skills" className="text-white/80 hover:text-white">Skills</a>
+            <a href="#experience" className="text-white/80 hover:text-white">Experience</a>
             <a href="#projects" className="text-white/80 hover:text-white">Projects</a>
             <a href="#contact" className="text-white/80 hover:text-white">Contact</a>
           </nav>
@@ -38,6 +40,7 @@ export default function App() {
         <Hero />
         <About />
         <Skills />
+        <Experience />
         <Projects />
         <Contact />
       </main>
