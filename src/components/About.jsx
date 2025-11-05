@@ -1,18 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Server, Layers, Sparkles } from 'lucide-react';
-
-const skills = {
-  frontend: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-  backend: ['Node.js', 'Express', 'FastAPI', 'PostgreSQL', 'MongoDB'],
-  tools: ['Docker', 'Git', 'CI/CD', 'Vite', 'Testing Library'],
-};
-
-const Badge = ({ children }) => (
-  <span className="inline-flex items-center rounded-md border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/90">
-    {children}
-  </span>
-);
+import { Sparkles, Rocket } from 'lucide-react';
 
 export default function About() {
   return (
@@ -28,67 +16,63 @@ export default function About() {
           <h2 className="text-3xl font-bold">About</h2>
         </div>
 
-        <div className="grid gap-10 md:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur"
-          >
-            <p className="text-white/80">
-              I'm Harikrishna A — a full stack developer passionate about building performant, accessible, and delightful products. I enjoy transforming ideas into high-quality web apps with clean architectures and thoughtful micro-interactions.
-            </p>
-            <div className="mt-6 grid grid-cols-3 gap-4">
-              <div>
-                <div className="mb-2 flex items-center gap-2 font-semibold"><Code2 size={18}/> Frontend</div>
-                <div className="flex flex-wrap gap-2">
-                  {skills.frontend.map((s) => (
-                    <Badge key={s}>{s}</Badge>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <div className="mb-2 flex items-center gap-2 font-semibold"><Server size={18}/> Backend</div>
-                <div className="flex flex-wrap gap-2">
-                  {skills.backend.map((s) => (
-                    <Badge key={s}>{s}</Badge>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <div className="mb-2 flex items-center gap-2 font-semibold"><Layers size={18}/> Tools</div>
-                <div className="flex flex-wrap gap-2">
-                  {skills.tools.map((s) => (
-                    <Badge key={s}>{s}</Badge>
-                  ))}
-                </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 backdrop-blur"
+        >
+          <div className="grid gap-8 md:grid-cols-[1.2fr,0.8fr]">
+            <div>
+              <h3 className="text-xl font-semibold">Hi, I’m Harikrishna A — Full Stack Developer</h3>
+              <p className="mt-3 text-white/80">
+                I build modern web apps end‑to‑end, from robust APIs to animated, accessible UIs. My focus is
+                performance, clean architecture, and delightful micro‑interactions using a vector/3D aesthetic.
+              </p>
+              <p className="mt-3 text-white/70">
+                Comfortable owning the product cycle: planning, implementation, testing, and shipping. I love working
+                with React, TypeScript, FastAPI, and cloud‑native tooling to deliver reliable experiences.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-5 py-3 text-sm font-semibold shadow-lg shadow-indigo-600/20 transition hover:translate-y-[-2px] hover:bg-indigo-500"
+                >
+                  <Rocket size={16} /> View Resume
+                </a>
+                <a
+                  href="#projects"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold transition hover:bg-white/10"
+                >
+                  Explore Projects
+                </a>
               </div>
             </div>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur"
-          >
-            <h3 className="mb-4 text-xl font-semibold">Experience</h3>
-            <ul className="space-y-5">
-              <li className="relative">
-                <div className="mb-1 text-sm text-white/60">2022 — Present</div>
-                <div className="text-white font-medium">Full Stack Developer • Freelance</div>
-                <p className="text-white/70">Building end-to-end products, from API design to pixel-perfect frontends. Focus on performance and DX.</p>
-              </li>
-              <li className="relative">
-                <div className="mb-1 text-sm text-white/60">2020 — 2022</div>
-                <div className="text-white font-medium">Frontend Engineer • Various</div>
-                <p className="text-white/70">Crafted responsive interfaces with component-driven architectures and animations.</p>
-              </li>
-            </ul>
-          </motion.div>
-        </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
+                <div className="text-3xl font-extrabold">5+ </div>
+                <div className="mt-1 text-xs text-white/60">Years Coding</div>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
+                <div className="text-3xl font-extrabold">20+ </div>
+                <div className="mt-1 text-xs text-white/60">Projects</div>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
+                <div className="text-3xl font-extrabold">10x</div>
+                <div className="mt-1 text-xs text-white/60">DX & Perf</div>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
+                <div className="text-3xl font-extrabold">100%</div>
+                <div className="mt-1 text-xs text-white/60">Passion</div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

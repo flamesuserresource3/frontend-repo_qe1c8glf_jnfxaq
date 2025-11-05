@@ -57,10 +57,12 @@ export default function Hero() {
               View Projects <ArrowRight size={18} />
             </a>
             <a
-              href="#contact"
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold transition hover:bg-white/10"
             >
-              Contact Me <ExternalLink size={18} />
+              View Resume <ExternalLink size={18} />
             </a>
           </motion.div>
 

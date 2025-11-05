@@ -1,10 +1,8 @@
 import React from 'react';
 import Hero from './components/Hero';
 import About from './components/About';
-import Experience from './components/Experience';
+import Skills from './components/Skills';
 import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 import { Rocket } from 'lucide-react';
 
 export default function App() {
@@ -19,22 +17,26 @@ export default function App() {
           </a>
           <nav className="hidden gap-6 text-sm md:flex">
             <a href="#about" className="text-white/80 hover:text-white">About</a>
-            <a href="#experience" className="text-white/80 hover:text-white">Experience</a>
+            <a href="#skills" className="text-white/80 hover:text-white">Skills</a>
             <a href="#projects" className="text-white/80 hover:text-white">Projects</a>
-            <a href="#contact" className="text-white/80 hover:text-white">Contact</a>
           </nav>
-          <a href="#contact" className="rounded-md bg-indigo-600 px-3 py-1.5 text-xs font-semibold shadow shadow-indigo-600/20 hover:bg-indigo-500">Hire Me</a>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-md bg-indigo-600 px-3 py-1.5 text-xs font-semibold shadow shadow-indigo-600/20 hover:bg-indigo-500"
+          >
+            View Resume
+          </a>
         </div>
       </header>
 
       <main>
         <Hero />
         <About />
-        <Experience />
+        <Skills />
         <Projects />
-        <Contact />
       </main>
-      <Footer />
     </div>
   );
 }

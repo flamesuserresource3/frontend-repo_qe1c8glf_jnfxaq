@@ -12,9 +12,8 @@ export default function Footer() {
           </a>
           <nav className="flex items-center gap-6 text-sm text-white/80">
             <a href="#about" className="hover:text-white">About</a>
-            <a href="#experience" className="hover:text-white">Experience</a>
+            <a href="#skills" className="hover:text-white">Skills</a>
             <a href="#projects" className="hover:text-white">Projects</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
           </nav>
           <div className="flex items-center gap-3">
             <a href="https://github.com" target="_blank" rel="noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-white/10">
